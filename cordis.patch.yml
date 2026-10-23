@@ -28,7 +28,9 @@
   config:
     includeHarnessIdentity: false
     personaPrefix: ""
-    personaSuffix: Your working directory is {{cwd}}.
+    # 0.2.1 只注册 provider/model。personaSuffix 里的 {{cwd}} 会在渲染前把整轮打掉。
+    # 工作目录由宿主 working-directory 上下文提供；组装时再按实际路径写字面量。
+    personaSuffix: ""
 
 - id: dsh-purge
   inject: [systemPrompt, tools]
